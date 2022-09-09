@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col col-lg-4 col-sm-11 col-md-7 m-3">
+        <!-- Muestra spinner de carga mientras se hace el request -->
+        <mat-grid-list cols="1" *ngIf="!trabajador; else trabajadorTemplate">
+            <mat-grid-tile>
+                <mat-spinner></mat-spinner>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <!-- Template para mostrar detalle del trabajador -->
+        <ng-template #trabajadorTemplate>
+
+            <mat-card class="animate__pulse">
+                <mat-card-header>
+                    <mat-card-title>{{ trabajador.nombre }}</mat-card-title>
+                    <mat-card-subtitle>{{ trabajador.apellido }}</mat-card-subtitle>
+                    <div class="spacer"></div>
+                    <p> | <small> Estado: </small><span> {{ trabajador.activo.toString() | i18nSelect:estadoTrabajadorMap }} </span> </p>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <strong>Rut: </strong> <span>{{trabajador.rut}}</span>
+                    <br>
+
+                    <strong>Teléfono: </strong> {{trabajador.telefono }}
+                    <br>
+                    <strong>F. de Nacimiento: </strong> {{ trabajador.fechaNacimiento }}
+
+                    <br>
+                    <strong>Dirección:</strong> <span>{{ direccion | titlecase }}</span>
+                    <br>
+                    <!-- Mensaje donde se indica estado de Rut y Dirección -->
+                    <div class="alert alert-info">
+                        <small> <strong> Rut:</strong> {{ estadoRut }}</small> <br> 
+                        <small> <strong> Fecha de Nacimiento:</strong> {{ estadoFechaNacimiento }}</small>  
+                    </div>
+                    <br>
+
+                </mat-card-content>
+                <hr>
+                <mat-card-actions>
+                    <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="center">
+
+                        <button type="button" class="btn btn-primary ml" [routerLink]="['/trabajadores/listado']">
+                            <mat-icon>keyboard_backspace</mat-icon>
+                            Volver
+                        </button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+
+        </ng-template>
+    </div>
+
+
+</div>
+

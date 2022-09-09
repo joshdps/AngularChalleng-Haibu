@@ -1,0 +1,32 @@
+<div class="animate__pulse" fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="center" fxLayoutGap="20px">
+
+    <div fxFlex="15" fxFlex.sm="40" fxFlex.md="30" fxFlex.lg="20" *ngFor="let trabajador of trabajadores">
+        <!--  -->
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ trabajador.nombre | titlecase }}</mat-card-title>
+                <mat-card-subtitle>{{ trabajador.apellido | titlecase}}</mat-card-subtitle>
+                <div class="spacer"></div>
+
+            </mat-card-header>
+            <mat-card-content>
+                <strong>Rut:</strong> <span>{{trabajador.rut}}</span>
+                <br>
+                <strong>F. de Nacimiento</strong> {{ trabajador.fechaNacimiento }}
+                <br>
+                <strong>Teléfono</strong> {{ trabajador.telefono }}
+                <br>
+            </mat-card-content>
+            <hr>
+            <mat-card-actions>
+                <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="center">
+
+                    <button type="button" class="btn btn-primary " [routerLink]="['/trabajadores',trabajador.id]">
+                        <mat-icon>notes</mat-icon>
+                        Ver mas...
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

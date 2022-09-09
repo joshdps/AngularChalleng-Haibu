@@ -1,0 +1,42 @@
+<div fxLayout="column">
+    <div>
+        <h2 class="m-2">Buscar Trabajador</h2>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div fxLayout="column">
+        <br>
+        <h4>Seleccione...</h4>
+        <mat-form-field  appearance="fill">
+            <mat-label>Trabajador</mat-label>
+            <input type="text" 
+                    placeholder="Seleccione..." 
+                    aria-label="Text" 
+                    matInput
+                    name="keyword" 
+                    [(ngModel)]="keyword"
+                    (input)="buscar()"
+                    [matAutocomplete]="auto">
+            <!-- Autocomplete de Angular Material para hacer busqueda de trabajador por el nombre -->
+            <mat-autocomplete autoActiveFirstOption 
+                              #auto="matAutocomplete"
+                              (optionSelected)="opcionSeleccionada( $event )">
+                <mat-option *ngFor="let Trabajador of trabajadores" 
+                            [value]="Trabajador">
+                     {{Trabajador.nombre | titlecase }},  {{Trabajador.apellido}}
+                </mat-option>
+
+                <!-- Si no se encuentran resultados se muestra el mensaje de error -->
+                <mat-option value="" *ngIf="trabajadores.length === 0" [disabled]="true">
+                    <pre>No se encontraron resultados con: <strong>{{keyword}}</strong></pre>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <br>
+        
+        <!-- Valida que se seleccione un trabajador para mostrar el componente con el detalle del mismo -->
+        <div *ngIf="trabajadorSeleccionado" class="animate__animated animate__fadeInRight animate__delay-2s">
+            <app-trabajador-tarjeta [trabajadores]="trabajadorSeleccionado"></app-trabajador-tarjeta>
+        </div>
+    </div>
+</div>

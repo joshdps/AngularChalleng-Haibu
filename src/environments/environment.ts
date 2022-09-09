@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://my-json-server.typicode.com/HaibuSolutions/prueba-tecnica-sf', // URL de la API
+  endpointUsuarios: '/user',
+  endpointTrabajadores: '/user' // Recurso para obtener listado de trabajadores
+
 };
 
 /*
