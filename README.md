@@ -16,11 +16,10 @@ Entre las herramientas utlizadas se puede mencionar:
 
 ***
 Se utilizaron las siguientes librerías de terceros:
-*    "moment": "^2.29.4",
-*    "rxjs": "~7.5.0",
-*    "tslib": "^2.3.0",
-*    "zone.js": "~0.11.4"
-* 
+*    "moment": "^2.29.4": Para hacer validación de la fecha de nacimiento
+*    "rxjs": "~7.5.0": Para manipular la data proveniente de la API
+*    "animate.css": "^4.1.1": Para darle efectos al mostrar tarjetas de trabajadores
+ 
 
 ***
 devDependencies
